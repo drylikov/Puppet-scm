@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+  <!--
+    FIREHOSE SERVER CONFIGURATION
+  -->
+  <property>
+    <name>firehose.server.host</name>
+    <value><%= hue_host %></value>
+  </property>
+  <property>
+    <name>firehose.server.port</name>
+    <value><%= firehose_port %></value>
+  </property>
+  <property>
+    <name>firehose.server.tcp</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>nozzle.server.port</name>
+    <value>9998</value>
+  </property>
+
+  <!--
+    HADOOP SYSTEM CONFIGURATION
+  -->
+  <property>
+    <name>oozie.enable</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>oozie.url</name>
+    <value>http://<%= oozie_host %>:<%= oozie_http_port %>/oozie</value>
+  </property>
+  <property>
+    <name>oozie.poller.interval.sec</name>
+    <value>5</value>
+  </property>
+  <property>
+    <name>oozie.auth.kerberos.enabled</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>jobtracker.host</name>
+    <value><%= jobtracker_host %></value>
+  </property>
+  <property>
+    <name>jobtracker.thrift.port</name>
+    <value><%= jobtracker_thrift_port %></value>
+  </property>
+  <property>
+    <name>jobtracker.fairscheduler.enable</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>jobtracker.poller.user</name>
+    <value>mapred</value>
+  </property>
+  <property>
+    <name>jobtracker.poller.interval.sec</name>
+    <value>5</value>
+  </property>
+
+  <!--
+    DEBUG CONFIGURATION
+  -->
+  <property>
+    <name>debug.servlet.host</name>
+    <value>0.0.0.0</value>
+  </property>
+  <property>
+    <name>debug.servlet.port</name>
+    <value>8087</value>
+  </property>
+
+  <!--
+    CACHE CONFIGURATION
+  -->
+  <property>
+      <name>cache.attempt.attempt.size</name>
+      <value>65536</value>
+  </property>
+
+  <property>
+      <name>cache.attempt.attemptstat.size</name>
+      <value>20</value>
+  </property>
+
+  <property>
+      <name>cache.activity.activity.size</name>
+      <value>8192</value>
+  </property>
+
+  <property>
+      <name>cache.cluster.cluster.size</name>
+      <value>1</value>
+  </property>
+
+  <property>
+      <name>cache.cluster.clusterstat.size</name>
+      <value>32</value>
+  </property>
+
+  <property>
+      <name>cache.host.host.size</name>
+      <value>128</value>
+  </property>
+
+  <property>
+      <name>cache.host.hoststat.size</name>
+      <value>8</value>
+  </property>
+
+  <property>
+      <name>max.graph.points</name>
+      <value>128</value>
+  </property>
+
+  <!--
+  DATABASE/HIBERNATE CONFIGURATION
+
+  All properties prefixed with "db." will be passed
+  to the Hibernate Entity Manager factory
+
+  Check the Hibernate documentation for more details.
+  -->
+  <!-- Default configuration for HSQLDB -->
+  <!--
+  <property>
+    <name>db.hibernate.dialect</name>
+    <value>org.hibernate.dialect.HSQLDialect</value>
+  </property>
+  <property>
+    <name>db.hibernate.hbm2ddl.auto</name>
+    <value>update</value>
+  </property>
+  <property>
+    <name>db.hibernate.connection.driver_class</name>
+    <value>org.hsqldb.jdbcDriver</value>
+  </property>
+  <property>
+    <name>db.hibernate.connection.username</name>
+    <value>sa</value>
+  </property>
+  <property>
+    <name>db.hibernate.connection.password</name>
+    <value></value>
+  </property>
+  <property>
+    <name>db.hibernate.connection.url</name>
+    <value>jdbc:hsqldb:file:data/cmon-db;hsqldb.write_delay=0;shutdown=true</value>
+  </property>
+  -->
+  
+  <!-- Configuration for MySQL using InnoDB -->
+  <property>
+    <name>db.hibernate.dialect</name>
+    <value>org.hibernate.dialect.MySQLInnoDBDialect</value>
+  </property>
+  <property>
+    <name>db.hibernate.hbm2ddl.auto</name>
+    <value>update</value>
+  </property>
+  <property>
+    <name>db.hibernate.connection.driver_class</name>
+    <value>com.mysql.jdbc.Driver</value>
+  </property>
+  <property>
+    <name>db.hibernate.connection.username</name>
+    <value><%= db_user %></value>
+  </property>
+  <property>
+    <name>db.hibernate.connection.password</name>
+    <value><%= db_pass %></value>
+  </property>
+  <property>
+    <name>db.hibernate.connection.url</name>
+    <value>jdbc:mysql://127.0.0.1:3306/<%= cmon_db_name %></value>
+  </property>
+  <property>
+    <name>db.hibernate.jdbc.batch_size</name>
+    <value>40</value>
+  </property>
+
+  <!--
+  Properties for the c3p0 connection manager. Do not modify.
+  -->
+  <property>
+    <name>db.hibernate.connection.provider_class</name>
+    <value>org.hibernate.connection.C3P0ConnectionProvider</value>
+  </property>
+  <property>
+    <name>db.c3p0.acquire_increment</name>
+    <value>1</value>
+  </property>
+  <property>
+    <name>db.c3p0.idle_test_period</name>
+    <value>100</value>
+  </property>
+  <property>
+    <name>db.c3p0.max_size</name>
+    <value>100</value>
+  </property>
+  <property>
+    <name>db.c3p0.max_statements</name>
+    <value>0</value>
+  </property>
+  <property>
+    <name>db.c3p0.min_size</name>
+    <value>10</value>
+  </property>
+  <property>
+    <name>db.c3p0.timeout</name>
+    <value>100</value>
+  </property>
+
+</configuration>

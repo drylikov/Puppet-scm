@@ -1,0 +1,48 @@
+# 
+#  Copyright (c) 2011, Cloudera, Inc. All Rights Reserved. 
+# 
+#  Cloudera, Inc. licenses this file to you under the Apache License, 
+#  Version 2.0 (the "License"). You may not use this file except in 
+#  compliance with the License. You may obtain a copy of the License at 
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0 
+# 
+#  This software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
+#  CONDITIONS OF ANY KIND, either express or implied. See the License for 
+#  the specific language governing permissions and limitations under the 
+#  License. 
+# 
+
+[General]
+# Hostname of Cloudera SCM Server
+server_host=<%= server_host %>
+
+# Port that server is listening on
+server_port=<%= server_port %>
+
+## It should not normally be necessary to modify these.
+# Port that Agent should listen on
+# listening_port=9000
+
+# IP Address that Agent should listen on
+# listening_ip=
+
+# Hostname that Agent reports as its hostname
+listening_hostname=<%= fqdn %>
+
+[Security]
+use_tls=0
+# verify_cert_file=
+# client_key_file=
+# client_keypw_file=
+# client_cert_file=
+
+## Location of Hadoop files. These are the CDH locations.
+[Hadoop]
+hadoop_home=/usr/lib/hadoop
+hbase_home=/usr/lib/hbase
+zookeeper_home=/usr/lib/zookeeper
+
+## Location of Cloudera Management Suite Binaries
+[Cloudera]
+cmon_agent=/usr/share/hue-cmon-plugin/build/env/bin/agent

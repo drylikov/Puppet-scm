@@ -1,0 +1,63 @@
+# 
+#  Copyright (c) 2011, Cloudera, Inc. All Rights Reserved. 
+# 
+#  Cloudera, Inc. licenses this file to you under the Apache License, 
+#  Version 2.0 (the "License"). You may not use this file except in 
+#  compliance with the License. You may obtain a copy of the License at 
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0 
+# 
+#  This software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
+#  CONDITIONS OF ANY KIND, either express or implied. See the License for 
+#  the specific language governing permissions and limitations under the 
+#  License. 
+# 
+
+#
+# Configuration for the Cloudera Enterprise Activity Monitoring Agent
+#
+
+[agent]
+
+#
+# Host and port to the TaskTracker's monitoring interface. This should
+# be consistent with these settings in mapred-site.xml:
+#   mapred.tasktracker.instrumentation.cmon.jettyhost
+#   mapred.tasktracker.instrumentation.cmon.jettyport
+#
+tt_url = http://127.0.0.1:4867
+
+#
+# Location of the Firehose Server, which is on the Hue node. This
+# should be consistent with these settings in cmon.conf:
+#   firehose.server.host
+#   firehose.server.port
+#
+firehose_addr = <%= hue_host %>
+firehose_port = <%= firehose_port %>
+
+#
+# Location to the log file
+#
+log_file = /var/log/hue-cmon-agent/agent.log
+
+#
+# Location to the pid file
+#
+pid_file = /var/run/hue-cmon-agent/agent.pid
+
+#
+# How often (in seconds) to collect data from the TaskTracker and the host.
+#
+collect_interval = 10.0
+
+#
+# How often (in seconds) to report collected data to the Firehose Server.
+# Setting this too low may severely affect system performance.
+#
+report_interval = 60.0
+
+#
+# Log verbosity: "debug", "info", "warning" or "error"
+#
+log_level = info
